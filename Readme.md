@@ -35,27 +35,26 @@ cd your-repo
 2. Install dependencies as shown above.
 
 ## Quick CLI usage
-Basic download from a single URL:
+Download every linked PDF from a single page:
 ```
-python scraper.py --url https://example.com/page-with-pdfs --output ./downloads
+python scraper.py --url https://example.com/resources --output ./downloads
 ```
-Download from a file with multiple URLs:
+Process a list of seed pages (one URL per line):
 ```
 python scraper.py --input urls.txt --output ./downloads --concurrency 4
 ```
-Extract text after download:
+Extract plain text alongside each PDF:
 ```
 python scraper.py --url https://example.com --output ./downloads --extract
 ```
 
-CLI options (common)
-- --url: single page URL to scan
-- --input: file containing URLs (one per line)
-- --output: output directory for downloaded PDFs
-- --extract: enable text extraction to .txt files
-- --concurrency: number of parallel downloads
-- --delay: seconds to wait between requests
-- --user-agent: custom user agent string
+Notable CLI options
+- `--max-depth`: follow HTML links up to _n_ hops away from the starting URL(s)
+- `--follow-external`: allow crawling across different domains
+- `--delay`: seconds to wait between requests (shared across threads)
+- `--user-agent`: custom identification string for polite crawling
+- `--no-robots`: ignore robots.txt (⚠️ only where permitted)
+- `--verbose`: emit detailed logging about crawl progress
 
 ## Library usage
 Example Python usage:
